@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Procedural_Animation"
-config/features=PackedStringArray("4.1", "Forward Plus")
+run/main_scene="res://Scenes/root.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]

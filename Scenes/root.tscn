@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo0fqfrrymy05"]
+[gd_scene load_steps=13 format=3 uid="uid://bo0fqfrrymy05"]
 
 [ext_resource type="Texture2D" uid="uid://bdc3o1tgb7wh7" path="res://Assets/Textures/grids/Green/texture_07.png" id="1_c8omn"]
 [ext_resource type="Texture2D" uid="uid://dmxmgw3rh0ym2" path="res://Assets/Textures/grids/Purple/texture_01.png" id="2_2pdtn"]
 [ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://Assets/Textures/grids/Orange/texture_01.png" id="3_i2kkb"]
+[ext_resource type="PackedScene" uid="uid://cw1dwnbxlompl" path="res://Scenes/player.tscn" id="4_6xflt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhbml"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,6 +24,9 @@ uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_jrlte"]
 size = Vector2(200, 200)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fg6v7"]
+data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_au2fy"]
 albedo_texture = ExtResource("2_2pdtn")
@@ -46,6 +50,11 @@ shadow_enabled = true
 [node name="Ground" type="MeshInstance3D" parent="Map"]
 material_override = SubResource("StandardMaterial3D_s4t3k")
 mesh = SubResource("PlaneMesh_jrlte")
+
+[node name="Ground_Collision" type="StaticBody3D" parent="Map/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Ground/Ground_Collision"]
+shape = SubResource("ConcavePolygonShape3D_fg6v7")
 
 [node name="Walls" type="CSGCombiner3D" parent="Map"]
 material_override = SubResource("StandardMaterial3D_au2fy")
@@ -92,3 +101,7 @@ size = Vector3(7.32259, 6.16323, 5.93401)
 [node name="Cube_05" type="CSGBox3D" parent="Map/Cubes"]
 transform = Transform3D(0.673774, 0, 0.738938, 0, 1, 0, -0.738938, 0, 0.673774, 40.0383, 3.0851, 58.0322)
 size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Player" parent="." instance=ExtResource("4_6xflt")]
+transform = Transform3D(1.99924, 0, 0, 0, 1.99924, 0, 0, 0, 1.99924, 0, 0.0187103, -3)
+horizontalCamSensitivity = 0.677
