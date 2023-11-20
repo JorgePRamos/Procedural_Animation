@@ -1,6 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bo0fqfrrymy05"]
+[gd_scene load_steps=11 format=3 uid="uid://bo0fqfrrymy05"]
 
 [ext_resource type="Texture2D" uid="uid://bdc3o1tgb7wh7" path="res://Assets/Textures/grids/Green/texture_07.png" id="1_8cp6i"]
+[ext_resource type="Texture2D" uid="uid://dmxmgw3rh0ym2" path="res://Assets/Textures/grids/Purple/texture_01.png" id="2_6qoob"]
+[ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://Assets/Textures/grids/Orange/texture_01.png" id="3_8hpvj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhbml"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yx83k"]
+sky_material = SubResource("ProceduralSkyMaterial_qhbml")
+
+[sub_resource type="Environment" id="Environment_5c11o"]
+background_mode = 2
+sky = SubResource("Sky_yx83k")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4t3k"]
 albedo_texture = ExtResource("1_8cp6i")
@@ -9,10 +24,71 @@ uv1_triplanar = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_jrlte"]
 size = Vector2(200, 200)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_au2fy"]
+albedo_texture = ExtResource("2_6qoob")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6sit"]
+albedo_texture = ExtResource("3_8hpvj")
+uv1_triplanar = true
+
 [node name="Root" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5c11o")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Map"]
 material_override = SubResource("StandardMaterial3D_s4t3k")
 mesh = SubResource("PlaneMesh_jrlte")
+
+[node name="Walls" type="CSGCombiner3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_au2fy")
+
+[node name="Wall_South" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.73358, -48.0388)
+size = Vector3(125.982, 15.3634, 2.00134)
+
+[node name="Wall_North" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.73358, 76.178)
+size = Vector3(125.982, 15.3634, 2.00134)
+
+[node name="Wall_East" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-0.00719067, 0, 0.999974, 0, 1, 0, -0.999974, 0, -0.00719067, -62.9201, 7.73358, 14.3051)
+size = Vector3(125.982, 15.3634, 2.00134)
+
+[node name="Wall_West" type="CSGBox3D" parent="Map/Walls"]
+transform = Transform3D(-0.00719067, 0, 0.999974, 0, 1, 0, -0.999974, 0, -0.00719067, 63.2493, 7.73358, 14.3051)
+size = Vector3(125.982, 15.3634, 2.00134)
+
+[node name="Cubes" type="CSGCombiner3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_e6sit")
+
+[node name="Cube_01" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.930462, 0, 0.366388, 0, 1, 0, -0.366388, 0, 0.930462, -15.3715, 3.0851, -13.3088)
+size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Cube_02" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.999998, 0, 0.00190237, 0, 1, 0, -0.00190237, 0, 0.999998, -24.4842, 3.0851, 11.5299)
+size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Cube_03" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.810205, 0, 0.586146, 0, 1, 0, -0.586146, 0, 0.810205, 24.0453, 3.0851, -25.3858)
+size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Cube_06" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.810205, 0, 0.586146, 0, 1, 0, -0.586146, 0, 0.810205, 14.4348, 3.0851, 16.4002)
+size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Cube_04" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.357961, 0, 0.933737, 0, 1, 0, -0.933737, 0, 0.357961, 27.8685, 3.0851, 34.5396)
+size = Vector3(7.32259, 6.16323, 5.93401)
+
+[node name="Cube_05" type="CSGBox3D" parent="Map/Cubes"]
+transform = Transform3D(0.673774, 0, 0.738938, 0, 1, 0, -0.738938, 0, 0.673774, 40.0383, 3.0851, 58.0322)
+size = Vector3(7.32259, 6.16323, 5.93401)
