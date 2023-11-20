@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo0fqfrrymy05"]
+
+[ext_resource type="Texture2D" uid="uid://bdc3o1tgb7wh7" path="res://Assets/Textures/grids/Green/texture_07.png" id="1_8cp6i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4t3k"]
+albedo_texture = ExtResource("1_8cp6i")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jrlte"]
+size = Vector2(200, 200)
+
+[node name="Root" type="Node"]
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Map"]
+material_override = SubResource("StandardMaterial3D_s4t3k")
+mesh = SubResource("PlaneMesh_jrlte")
