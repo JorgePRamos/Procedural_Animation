@@ -102,5 +102,4 @@ size = Vector3(7.32259, 6.16323, 5.93401)
 transform = Transform3D(0.673774, 0, 0.738938, 0, 1, 0, -0.738938, 0, 0.673774, 40.0383, 3.0851, 58.0322)
 size = Vector3(7.32259, 6.16323, 5.93401)
 
-[node name="Player" parent="." instance=ExtResource("4_04ps1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
+[node name="Player" parent="Map" instance=ExtResource("4_04ps1")]

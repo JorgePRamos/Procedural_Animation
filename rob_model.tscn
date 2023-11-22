@@ -54,5 +54,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76899, 0.199045, 2.49352)
 top_level = true
 
 [node name="Back_L_MK" type="Marker3D" parent="Armature" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32573, 0.199045, 2.49352)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32573, 0.0968139, 2.49352)
 top_level = true
+
+[node name="Camera_Mount" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31408, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Mount" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.84765, 0.530555, 0, -0.530555, 0.84765, 0, 6.77552, 9.73159)
