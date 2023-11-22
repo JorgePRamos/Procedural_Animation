@@ -1,6 +1,6 @@
 using Godot;
 using System;
-public partial class player : CharacterBody3D
+public partial class third_person_template : CharacterBody3D
 {	
 	//Exported variables so we can change them in editor
 	[Export(PropertyHint.Range, "0.1,1.0")] float verticalCamSensitivity = 0.7f;
