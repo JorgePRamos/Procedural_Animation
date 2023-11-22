@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://dnj18wtqbxfnv" path="res://Assets/Models/rob_model.glb" id="2_73mek"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cvt2q"]
-height = 1.871
-radius = 0.37
+height = 6.0
+radius = 2.0
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_5jrdn")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.935284, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.02726, 0)
 shape = SubResource("CylinderShape3D_cvt2q")
 
 [node name="Visuals" type="Node3D" parent="."]
@@ -22,4 +22,4 @@ shape = SubResource("CylinderShape3D_cvt2q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31408, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_Mount"]
-transform = Transform3D(1, 0, 0, 0, 0.956085, 0.293089, 0, -0.293089, 0.956085, 0, 0.775518, 1.73159)
+transform = Transform3D(1, 0, 0, 0, 0.84765, 0.530555, 0, -0.530555, 0.84765, 0, 6.77552, 9.73159)
