@@ -6,6 +6,7 @@
 [node name="rob_model" instance=ExtResource("1_eslfb")]
 
 [node name="Left_F_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="39"]
+process_priority = 1
 root_bone = &"top_FL"
 tip_bone = &"extra_FL"
 use_magnet = true
@@ -14,6 +15,7 @@ target_node = NodePath("../../../Front_L_MK")
 script = ExtResource("2_duhuc")
 
 [node name="Right_F_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="40"]
+process_priority = 1
 root_bone = &"top_FR"
 tip_bone = &"extra_FR"
 use_magnet = true
@@ -22,6 +24,7 @@ target_node = NodePath("../../../Front_R_MK")
 script = ExtResource("2_duhuc")
 
 [node name="Right_B_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="41"]
+process_priority = 1
 root_bone = &"top_BR"
 tip_bone = &"extra_BR"
 use_magnet = true
@@ -30,6 +33,7 @@ target_node = NodePath("../../../Back_R_MK")
 script = ExtResource("2_duhuc")
 
 [node name="Left_B_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="42"]
+process_priority = 1
 root_bone = &"top_BL"
 tip_bone = &"extra_BL"
 use_magnet = true
