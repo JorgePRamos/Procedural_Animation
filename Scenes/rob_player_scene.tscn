@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcl164xf7y4o"]
+
+[ext_resource type="Script" path="res://Scripts/third_person_template.cs" id="1_kseto"]
+[ext_resource type="PackedScene" uid="uid://bi7pwuy4xi1oa" path="res://Scenes/rob_model_scene.tscn" id="2_pbygc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cvt2q"]
+height = 6.42131
+radius = 2.714
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_kseto")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26057, 0)
+shape = SubResource("CylinderShape3D_cvt2q")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="rob_model" parent="Visuals" instance=ExtResource("2_pbygc")]
+
+[node name="Camera_Mount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31408, 1)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Mount"]
+transform = Transform3D(1, 0, 0, 0, 0.956085, 0.293089, 0, -0.293089, 0.956085, 0, 5.77552, 8.73159)
