@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi7pwuy4xi1oa"]
+
+[ext_resource type="PackedScene" uid="uid://dnj18wtqbxfnv" path="res://Assets/Models/rob_model.glb" id="1_eslfb"]
+[ext_resource type="Script" path="res://Scripts/start_ik.cs" id="2_duhuc"]
+
+[node name="rob_model" instance=ExtResource("1_eslfb")]
+
+[node name="Left_F_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="39"]
+root_bone = &"top_FL"
+tip_bone = &"extra_FL"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../../Front_L_MK")
+script = ExtResource("2_duhuc")
+
+[node name="Right_F_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="40"]
+root_bone = &"top_FR"
+tip_bone = &"extra_FR"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../../Front_R_MK")
+script = ExtResource("2_duhuc")
+
+[node name="Right_B_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="41"]
+root_bone = &"top_BR"
+tip_bone = &"extra_BR"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../../Back_R_MK")
+script = ExtResource("2_duhuc")
+
+[node name="Left_B_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="42"]
+root_bone = &"top_BL"
+tip_bone = &"extra_BL"
+use_magnet = true
+magnet = Vector3(0, 10, 0)
+target_node = NodePath("../../../Back_L_MK")
+script = ExtResource("2_duhuc")
+
+[node name="Front_L_MK" type="Marker3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55665, 0, -2.28353)
+top_level = true
+
+[node name="Front_R_MK" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71127, 0, -2.2251)
+top_level = true
+
+[node name="Back_R_MK" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71127, 0, 2.27408)
+top_level = true
+
+[node name="Back_L_MK" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45987, 0, 2.27408)
+top_level = true
