@@ -23,9 +23,11 @@ public partial class ik_target : Marker3D
 		Vector3 targetPos = stepTarget.GlobalPosition;
 		Vector3 halfWay = (GlobalPosition + stepTarget.GlobalPosition) / 2;
 
-		Tween t = GetTree().CreateTween();
-		t.TweenProperty(this, "GlobalPosition", halfWay + Basis.Y, 0.1);
-		t.TweenProperty(this, "GlobalPosition", targetPos, 0.1);
+		Tween tween = GetTree().CreateTween();
+		
+		
+		tween.TweenProperty(this, "position", halfWay + Basis.Y, 0.1);
+		tween.TweenProperty(this, "position", targetPos, 0.1);
 
 		;
 	}
