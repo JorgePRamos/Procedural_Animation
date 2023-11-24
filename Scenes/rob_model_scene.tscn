@@ -43,29 +43,41 @@ magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../../Back_L_MK")
 script = ExtResource("2_duhuc")
 
-[node name="Front_L_MK" type="Marker3D" parent="." index="1" node_paths=PackedStringArray("stepTarget")]
+[node name="Front_L_MK" type="Marker3D" parent="." index="1" node_paths=PackedStringArray("stepTarget", "adjacentTarget", "oppositeTarget")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.32269, 0, -3.0673)
 top_level = true
 script = ExtResource("3_x3dbw")
 stepTarget = NodePath("../Step_Target_Cotainer/Front_L_RC/Front_L_S")
+stepDistance = 2.5
+adjacentTarget = NodePath("../Front_R_MK")
+oppositeTarget = NodePath("../Back_R_MK")
 
-[node name="Front_R_MK" type="Marker3D" parent="." index="2" node_paths=PackedStringArray("stepTarget")]
+[node name="Front_R_MK" type="Marker3D" parent="." index="2" node_paths=PackedStringArray("stepTarget", "adjacentTarget", "oppositeTarget")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.40517, 0, -3.07702)
 top_level = true
 script = ExtResource("3_x3dbw")
 stepTarget = NodePath("../Step_Target_Cotainer/Front_R_RC/Front_R_S")
+stepDistance = 2.5
+adjacentTarget = NodePath("../Front_L_MK")
+oppositeTarget = NodePath("../Back_L_MK")
 
-[node name="Back_R_MK" type="Marker3D" parent="." index="3" node_paths=PackedStringArray("stepTarget")]
+[node name="Back_R_MK" type="Marker3D" parent="." index="3" node_paths=PackedStringArray("stepTarget", "adjacentTarget", "oppositeTarget")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.31347, 0, 2.27408)
 top_level = true
 script = ExtResource("3_x3dbw")
 stepTarget = NodePath("../Step_Target_Cotainer/Back_R_RC/Back_R_S")
+stepDistance = 2.5
+adjacentTarget = NodePath("../Back_L_MK")
+oppositeTarget = NodePath("../Front_L_MK")
 
-[node name="Back_L_MK" type="Marker3D" parent="." index="4" node_paths=PackedStringArray("stepTarget")]
+[node name="Back_L_MK" type="Marker3D" parent="." index="4" node_paths=PackedStringArray("stepTarget", "adjacentTarget", "oppositeTarget")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98233, 0, 2.27408)
 top_level = true
 script = ExtResource("3_x3dbw")
 stepTarget = NodePath("../Step_Target_Cotainer/Back_L_RC/Back_L_S")
+stepDistance = 2.5
+adjacentTarget = NodePath("../Back_R_MK")
+oppositeTarget = NodePath("../Front_R_MK")
 
 [node name="Step_Target_Cotainer" type="Node3D" parent="." index="5"]
 
