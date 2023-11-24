@@ -18,4 +18,8 @@ The project has been developed in Godot .Net and the 3D model in Blender.
 
 ### Inverse kinematics in Godot
 
-![R.O.B.I progress 3](/Media/robi_ik.gif)
+![R.O.B.I gif01](/Media/robi_ik.gif)
+
+### Walking cycle procedural animated in .NET Godot
+
+![R.O.B.I gif02](/Media/robi_walk.gif)
