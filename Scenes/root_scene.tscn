@@ -57,7 +57,9 @@ mesh = SubResource("PlaneMesh_jrlte")
 shape = SubResource("ConcavePolygonShape3D_fg6v7")
 
 [node name="Walls" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0411377, 0.0881691, 0.0666609)
 material_override = SubResource("StandardMaterial3D_au2fy")
+use_collision = true
 
 [node name="Wall_South" type="CSGBox3D" parent="Map/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.73358, -48.0388)
@@ -76,7 +78,9 @@ transform = Transform3D(-0.00719067, 0, 0.999974, 0, 1, 0, -0.999974, 0, -0.0071
 size = Vector3(125.982, 15.3634, 2.00134)
 
 [node name="Cubes" type="CSGCombiner3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0124035, 0.0909004, 0.0194702)
 material_override = SubResource("StandardMaterial3D_e6sit")
+use_collision = true
 
 [node name="Cube_01" type="CSGBox3D" parent="Map/Cubes"]
 transform = Transform3D(0.930462, 0, 0.366388, 0, 1, 0, -0.366388, 0, 0.930462, -15.3715, 3.0851, -13.3088)
@@ -102,4 +106,8 @@ size = Vector3(7.32259, 6.16323, 5.93401)
 transform = Transform3D(0.673774, 0, 0.738938, 0, 1, 0, -0.738938, 0, 0.673774, 40.0383, 3.0851, 58.0322)
 size = Vector3(7.32259, 6.16323, 5.93401)
 
-[node name="Player" parent="." instance=ExtResource("4_wod4r")]
+[node name="Ramp_01" type="CSGPolygon3D" parent="Map/Cubes"]
+transform = Transform3D(-13.8757, 0.0515167, 1.55504, 0.129259, 6.13578, 0.0350515, -2.39182, 0.0327272, -9.01938, 37.3747, -0.436275, -1.99272)
+polygon = PackedVector2Array(0, 0, 0, 1, 1.00646, 0.0136728, 1, 0)
+
+[node name="Player" parent="Map" instance=ExtResource("4_wod4r")]
