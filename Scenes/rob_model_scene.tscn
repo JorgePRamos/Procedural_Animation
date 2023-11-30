@@ -117,4 +117,4 @@ script = ExtResource("3_gbq4d")
 stepTarget = NodePath("Front_R_S")
 
 [node name="Front_R_S" type="Marker3D" parent="Step_Target_Cotainer/Front_R_RC" index="0"]
-transform = Transform3D(0.986196, 0.165581, 0, -0.165581, 0.986196, 0, 0, 0, 1, -0.10018, -5.11793, 0)
+transform = Transform3D(0.986196, 0.165581, -2.32831e-10, -0.165581, 0.986196, 1.16415e-10, -2.32831e-10, 0, 1, -0.10018, -5.11793, 0)

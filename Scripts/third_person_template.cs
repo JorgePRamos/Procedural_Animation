@@ -74,7 +74,14 @@ public partial class third_person_template : CharacterBody3D
 		Vector3 avg = (frontLIK.Position + frontRIK.Position + backRIK.Position + backLIK.Position) / 4;
 		Vector3 target = avg + Basis.Y * hightOffset;
 		float distance = Basis.Y.Dot(target - Position);
-		//Position = Position.Slerp((Position + Transform.Basis.Y * distance).Normalized(), (float)(moveSpeed * delta)).Normalized();
+		//Position = Position.Slerp(Position + Transform.Basis.Y * distance, (float)(moveSpeed * delta));
+		
+		//GD.Print("Is Position normalize: "+ Position.IsNormalized());
+		//Position = Position.Slerp(Position.Normalized(), (float)(moveSpeed * delta));
+		Vector3 targetPosition = Position.Slerp(Position + Transform.Basis.Y * distance, (float)(moveSpeed * delta));
+
+		Position = targetPosition;
+
 
 	}
 	public override void _PhysicsProcess(double delta)
