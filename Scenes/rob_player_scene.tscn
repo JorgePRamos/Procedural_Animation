@@ -19,7 +19,7 @@ shape = SubResource("CylinderShape3D_cvt2q")
 [node name="rob_model" parent="Visuals" instance=ExtResource("2_pbygc")]
 
 [node name="Camera_Mount" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31408, 1)
+transform = Transform3D(0.999942, 0, -0.0107685, 0, 1, 0, 0.0107685, 0, 0.999942, 0, 3.31408, 1)
 
 [node name="Camera3D" type="Camera3D" parent="Camera_Mount"]
-transform = Transform3D(1, 0, 0, 0, 0.956085, 0.293089, 0, -0.293089, 0.956085, 0, 5.77552, 8.73159)
+transform = Transform3D(0.999785, -0.0184536, -0.00941277, 0.0206942, 0.910322, 0.413383, 0.000940254, -0.413489, 0.910509, -0.329636, 5.26662, 8.87081)

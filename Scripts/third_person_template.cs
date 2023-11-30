@@ -18,7 +18,6 @@ public partial class third_person_template : CharacterBody3D
 	public override void _Ready()
 	{
 		base._Ready();
-		Console.WriteLine("Hello from Cs with Console");
 		//Make mouse not visible and limit it to the game screen
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 

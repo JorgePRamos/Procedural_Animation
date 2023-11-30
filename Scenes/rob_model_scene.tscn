@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/start_ik.cs" id="2_duhuc"]
 [ext_resource type="Script" path="res://Scripts/step_ray.cs" id="3_gbq4d"]
 [ext_resource type="Script" path="res://Scripts/ik_target.cs" id="3_x3dbw"]
-[ext_resource type="Script" path="res://Scenes/step_target_container.cs" id="4_2ljyy"]
+[ext_resource type="Script" path="res://Scripts/step_target_container.cs" id="4_5m866"]
 
 [node name="rob_model" instance=ExtResource("1_eslfb")]
 
@@ -81,7 +81,7 @@ adjacentTarget = NodePath("../Back_R_MK")
 oppositeTarget = NodePath("../Front_R_MK")
 
 [node name="Step_Target_Cotainer" type="Node3D" parent="." index="5"]
-script = ExtResource("4_2ljyy")
+script = ExtResource("4_5m866")
 
 [node name="Back_R_RC" type="RayCast3D" parent="Step_Target_Cotainer" index="0" node_paths=PackedStringArray("stepTarget")]
 transform = Transform3D(0.986196, -0.165581, 0, 0.165581, 0.986196, 0, 0, 0, 1, 3.5767, 5.21427, 2.27408)
