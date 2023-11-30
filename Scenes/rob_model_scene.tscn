@@ -1,14 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi7pwuy4xi1oa"]
+[gd_scene load_steps=6 format=3 uid="uid://bi7pwuy4xi1oa"]
 
 [ext_resource type="PackedScene" uid="uid://dnj18wtqbxfnv" path="res://Assets/Models/rob_model.glb" id="1_eslfb"]
 [ext_resource type="Script" path="res://Scripts/start_ik.cs" id="2_duhuc"]
-[ext_resource type="Script" path="res://Scripts/rob_body.cs" id="2_ry0cs"]
 [ext_resource type="Script" path="res://Scripts/step_ray.cs" id="3_gbq4d"]
 [ext_resource type="Script" path="res://Scripts/ik_target.cs" id="3_x3dbw"]
 [ext_resource type="Script" path="res://Scripts/step_target_container.cs" id="4_5m866"]
 
 [node name="rob_model" instance=ExtResource("1_eslfb")]
-script = ExtResource("2_ry0cs")
 
 [node name="Left_F_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="39"]
 process_priority = 1
