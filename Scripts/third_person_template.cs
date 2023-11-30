@@ -8,7 +8,9 @@ public partial class third_person_template : CharacterBody3D
 	[Export(PropertyHint.Range, "-90,0,1")] float minCamPitch = -50f;
 	[Export(PropertyHint.Range, "0,90,1")] float maxCamPitch = 30f;
 
+	//Body distance from ground
 	[Export] float hightOffset = 0.5f;
+	//Store the ik leg nodes
 	Marker3D frontLIK;
 	Marker3D frontRIK;
 	Marker3D backLIK;
@@ -26,6 +28,7 @@ public partial class third_person_template : CharacterBody3D
 		base._Ready();
 		//Make mouse not visible and limit it to the game screen
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		//Fetch IK targets from nested scene
 		frontLIK = GetNode<Node3D>("Visuals").GetNode<Node3D>("rob_model").GetNode<Marker3D>("Front_L_MK");
 		frontRIK = GetNode<Node3D>("Visuals").GetNode<Node3D>("rob_model").GetNode<Marker3D>("Front_R_MK");
 		backLIK = GetNode<Node3D>("Visuals").GetNode<Node3D>("rob_model").GetNode<Marker3D>("Back_L_MK");
@@ -48,8 +51,8 @@ public partial class third_person_template : CharacterBody3D
 			//Orbit character
 			//camRot.Y -= mouseMotion.Relative.X * camSensitivity;
 			camRot.X -= mouseMotion.Relative.Y * verticalCamSensitivity;
-
-			RotateY(mathTools.DegToRad(mouseMotion.Relative.X * horizontalCamSensitivity));
+			//Rotation in Y negative to follow mouse
+			RotateY(mathTools.DegToRad(-(mouseMotion.Relative.X * horizontalCamSensitivity)));
 
 		}
 
@@ -58,28 +61,30 @@ public partial class third_person_template : CharacterBody3D
 		//Update Camera arm mount current rotation
 		GetNode<Node3D>("Camera_Mount").RotationDegrees = camRot;
 	}
+
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
+		//Create 2 planes defined by legs IK positions
 		Plane plane1 = new Plane(backLIK.GlobalPosition, frontLIK.GlobalPosition, frontRIK.GlobalPosition);
 		Plane plane2 = new Plane(frontRIK.GlobalPosition, backRIK.GlobalPosition, backLIK.GlobalPosition);
+		//Find average between the two to get body target orientation 
 		Vector3 avgNormal = ((plane1.Normal + plane2.Normal) / 2).Normalized();
 
-		//charBody = GetNode<CharacterBody3D>("Player");
-		//float moveSpeed = (float)charBody.Get("Speed");
-		float moveSpeed = Speed;
+		//Convert normal in to a transformation based expression
 		Basis targetBasis = basisFromNormal(avgNormal);
-		Basis = Basis.Slerp(targetBasis, (float)(moveSpeed * delta)).Orthonormalized();
+		Basis = Basis.Slerp(targetBasis, (float)(Speed * delta)).Orthonormalized();
 
+		//Average between legs
 		Vector3 avg = (frontLIK.Position + frontRIK.Position + backRIK.Position + backLIK.Position) / 4;
+		//Calculate target by adding the body y direction times the set offset
 		Vector3 target = avg + Basis.Y * hightOffset;
-		float distance = Basis.Y.Dot(target - Position);
-		//Position = Position.Slerp(Position + Transform.Basis.Y * distance, (float)(moveSpeed * delta));
 		
-		//GD.Print("Is Position normalize: "+ Position.IsNormalized());
-		//Position = Position.Slerp(Position.Normalized(), (float)(moveSpeed * delta));
-		Vector3 targetPosition = Position.Slerp(Position + Transform.Basis.Y * distance, (float)(moveSpeed * delta));
+		//Distance between current and target
+		float distance = Basis.Y.Dot(target - Position);
 
+		//Interpolate current position and target
+		Vector3 targetPosition = Position.Slerp(Position + Transform.Basis.Y * distance, (float)(Speed * delta));
 		Position = targetPosition;
 
 
@@ -114,7 +119,7 @@ public partial class third_person_template : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-
+	//Translates normal to basis
 	public Basis basisFromNormal(Vector3 normal)
 	{
 		Basis result = new Basis();
